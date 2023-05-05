@@ -12,34 +12,12 @@ const app = express() // aqui estou iniciando o app
 app.use(express.json())
 const porta = 3333 // aqui estou criando a porta
 
-// aqui estou criando a lista inicial de mulheres
-const mulheres = [
-    {
-        id: '1',
-        nome: 'Simara Conceição',
-        imagem: 'https://avatars.githubusercontent.com/u/109319620?s=400&u=bd7d953440abbd2f57355aebeb42ad2c09f55a9d&v=4',
-        minibio: 'lorem impsujm'
-    }, 
-    {
-        id: '2',
-        nome: 'Iana Chan',
-        imagem: 'https://avatars.githubusercontent.com/u/109319620?s=400&u=bd7d953440abbd2f57355aebeb42ad2c09f55a9d&v=4',
-        minibio: 'lorem lorem'
-    }, 
-    {
-        id:'3',
-        nome: 'Lalala',
-        imagem: 'https://avatars.githubusercontent.com/u/109319620?s=400&u=bd7d953440abbd2f57355aebeb42ad2c09f55a9d&v=4',
-        minibio: 'lorem lorem iu'
-    }
-]
-
 //Get
 function mostraMulheres(request, response) {
     response.json(mulheres)
 }
 
-
+//post
 function criaMulher(request, response) {
     const novaMulher = {
         id: uuidv4(),
