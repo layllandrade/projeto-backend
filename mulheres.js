@@ -8,13 +8,20 @@ const conectaBancoDeDados = require('./bancoDeDados');
 // Aqui estou chamando a função que conecta o banco de dados
 conectaBancoDeDados()
 
+const Mulher = require('./mulherModel')
 const app = express() // aqui estou iniciando o app
 app.use(express.json())
 const porta = 3333 // aqui estou criando a porta
 
 //Get
-function mostraMulheres(request, response) {
-    response.json(mulheres)
+async function mostraMulheres(request, response) {
+    try {
+        const mulheresVindasDoBancoDeDados = await Mulher.find()
+
+        response.json(mulheresVindasDoBancoDeDados)
+    }catch(erro) {
+        console.log(erro)
+    }
 }
 
 //post
