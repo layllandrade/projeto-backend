@@ -1,11 +1,18 @@
-const express = require("express")
-const router = express.Router()
+const express = require("express") //aqui estou iniciando o express
+const router = express.Router() // aqui estou configurando a primeira parte da rota
 const { v4: uuidv4 } = require('uuid');
 
-const app = express()
-app.use(express.json())
-const porta = 3333
+//Aqui estou ligando ao arquivo banco de dados
+const conectaBancoDeDados = require('./bancoDeDados');
 
+// Aqui estou chamando a função que conecta o banco de dados
+conectaBancoDeDados()
+
+const app = express() // aqui estou iniciando o app
+app.use(express.json())
+const porta = 3333 // aqui estou criando a porta
+
+// aqui estou criando a lista inicial de mulheres
 const mulheres = [
     {
         id: '1',
@@ -27,6 +34,7 @@ const mulheres = [
     }
 ]
 
+//Get
 function mostraMulheres(request, response) {
     response.json(mulheres)
 }
